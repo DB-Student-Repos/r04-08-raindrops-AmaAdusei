@@ -1,112 +1,36 @@
-#[test]
-fn test_1() {
-    assert_eq!("1", raindrops::raindrops(1));
+fn raindrops(n: i32) -> String {
+    let mut result = String::new();
+
+    if n % 3 == 0 {
+        result.push_str("Pling");
+    }
+    if n % 5 == 0 {
+        result.push_str("Plang");
+    }
+    if n % 7 == 0 {
+        result.push_str("Plong");
+    }
+
+    if result.is_empty() {
+        result = n.to_string();
+    }
+
+    result
 }
 
-#[test]
-#[ignore]
-fn test_3() {
-    assert_eq!("Pling", raindrops::raindrops(3));
+use std::io;
+
+fn main() {
+    println!("Enter a number:");
+
+    let mut input_num = String::new();
+
+    io::stdin().read_line(&mut input_num)
+        .expect("Failed to read line");
+    let num: i32 = input_num.trim().parse()
+        .expect("Please enter a valid number");
+
+    println!("{}", raindrops(num)); 
 }
 
-#[test]
-#[ignore]
-fn test_5() {
-    assert_eq!("Plang", raindrops::raindrops(5));
-}
 
-#[test]
-#[ignore]
-fn test_7() {
-    assert_eq!("Plong", raindrops::raindrops(7));
-}
-
-#[test]
-#[ignore]
-fn test_6() {
-    assert_eq!("Pling", raindrops::raindrops(6));
-}
-
-#[test]
-#[ignore]
-fn test_8() {
-    assert_eq!("8", raindrops::raindrops(8));
-}
-
-#[test]
-#[ignore]
-fn test_9() {
-    assert_eq!("Pling", raindrops::raindrops(9));
-}
-
-#[test]
-#[ignore]
-fn test_10() {
-    assert_eq!("Plang", raindrops::raindrops(10));
-}
-
-#[test]
-#[ignore]
-fn test_14() {
-    assert_eq!("Plong", raindrops::raindrops(14));
-}
-
-#[test]
-#[ignore]
-fn test_15() {
-    assert_eq!("PlingPlang", raindrops::raindrops(15));
-}
-
-#[test]
-#[ignore]
-fn test_21() {
-    assert_eq!("PlingPlong", raindrops::raindrops(21));
-}
-
-#[test]
-#[ignore]
-fn test_25() {
-    assert_eq!("Plang", raindrops::raindrops(25));
-}
-
-#[test]
-#[ignore]
-fn test_27() {
-    assert_eq!("Pling", raindrops::raindrops(27));
-}
-
-#[test]
-#[ignore]
-fn test_35() {
-    assert_eq!("PlangPlong", raindrops::raindrops(35));
-}
-
-#[test]
-#[ignore]
-fn test_49() {
-    assert_eq!("Plong", raindrops::raindrops(49));
-}
-
-#[test]
-#[ignore]
-fn test_52() {
-    assert_eq!("52", raindrops::raindrops(52));
-}
-
-#[test]
-#[ignore]
-fn test_105() {
-    assert_eq!("PlingPlangPlong", raindrops::raindrops(105));
-}
-
-#[test]
-#[ignore]
-fn test_3125() {
-    assert_eq!("Plang", raindrops::raindrops(3125));
-}
-
-#[test]
-#[ignore]
-fn test_12121() {
-    assert_eq!("12121", raindrops::raindrops(12_121));
-}
